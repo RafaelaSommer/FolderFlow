@@ -41,12 +41,12 @@ python "Gerador de Pastas.py"
 python "Gerador Excel.py"
 python "conversor_ico.py"
 
-🖥️ Interfaces Simples e Diretas
-🎨 Design limpo e funcional
-🌙 Dark mode no Gerador de Pastas
-🚫 Sem necessidade de terminal após abrir
-⚡ Experiência pensada para agilidade
-📁 Gerador de Pastas
+- 🖥️ Interfaces Simples e Diretas
+- 🎨 Design limpo e funcional
+- 🌙 Dark mode no Gerador de Pastas
+- 🚫 Sem necessidade de terminal após abrir
+- ⚡ Experiência pensada para agilidade
+- 📁 Gerador de Pastas
 
 Crie estruturas completas com apenas alguns cliques.
 
