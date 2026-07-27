@@ -1,0 +1,41 @@
+# LICENÇA DE USO – FOLDERFLOW
+
+Versão 1.0
+
+Copyright © 2026 Rafaela Sommer Gonçalves. Todos os direitos reservados.
+
+Ao adquirir e utilizar o software FolderFlow, o usuário concorda com os termos desta licença.
+
+## 1. Concessão de Licença
+
+Esta licença concede ao comprador o direito de instalar e utilizar uma cópia do FolderFlow em seu computador para uso pessoal ou comercial interno.
+
+## 2. Restrições
+
+É proibido:
+
+* Revender o software sem autorização do autor.
+* Compartilhar o arquivo executável ou instalador com terceiros.
+* Distribuir versões modificadas.
+* Remover créditos, marcas ou avisos de copyright.
+* Utilizar o software para fins ilícitos.
+
+## 3. Propriedade Intelectual
+
+Todos os direitos sobre o software, código-fonte, identidade visual, logotipo, documentação e materiais relacionados pertencem exclusivamente à autora.
+
+## 4. Atualizações
+
+Atualizações poderão ser disponibilizadas conforme a política comercial vigente.
+
+## 5. Garantia
+
+O software é fornecido "no estado em que se encontra", sem garantia de funcionamento em todos os ambientes computacionais.
+
+## 6. Limitação de Responsabilidade
+
+A autora não será responsável por perdas de dados, lucros cessantes ou danos decorrentes do uso do software.
+
+## 7. Aceitação
+
+Ao instalar ou utilizar o FolderFlow, o usuário declara ter lido e aceitado esta licença.

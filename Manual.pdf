@@ -1,0 +1,108 @@
+# MANUAL DO USUÁRIO
+
+## FolderFlow
+
+### Organizador Inteligente de Pastas e Planilhas
+
+Versão 1.0
+
+---
+
+# Bem-vindo
+
+Obrigado por adquirir o FolderFlow.
+
+Este software foi desenvolvido para automatizar a criação de estruturas de pastas e planilhas, reduzindo tarefas repetitivas e aumentando a produtividade.
+
+---
+
+# Requisitos
+
+* Windows 10 ou superior
+* 4 GB de memória RAM (mínimo recomendado)
+* 100 MB de espaço livre
+* Microsoft Excel (opcional, para abrir as planilhas geradas)
+
+---
+
+# Instalação
+
+1. Execute o instalador FolderFlow_Setup.exe.
+2. Siga as instruções na tela.
+3. Aguarde a conclusão.
+4. Abra o programa pelo menu Iniciar ou pelo atalho criado na Área de Trabalho.
+
+---
+
+# Como Utilizar
+
+## 1. Abrir o programa
+
+Clique no ícone FolderFlow.
+
+## 2. Selecionar a pasta principal
+
+Escolha onde deseja criar a estrutura.
+
+## 3. Definir as informações
+
+Informe o nome do projeto e as opções desejadas.
+
+## 4. Criar estrutura
+
+Clique em **Criar Estrutura**.
+
+O FolderFlow irá:
+
+* criar todas as pastas;
+* criar todas as subpastas;
+* gerar automaticamente a planilha Excel.
+
+---
+
+# Recursos
+
+✔ Criação automática de diretórios
+
+✔ Criação de subpastas
+
+✔ Geração de planilhas Excel
+
+✔ Interface simples
+
+✔ Organização padronizada
+
+---
+
+# Solução de Problemas
+
+### O programa não abre
+
+Execute como Administrador.
+
+### Não consigo criar pastas
+
+Verifique se você possui permissão para gravar na pasta escolhida.
+
+### O Excel não abre
+
+Confirme se há um programa compatível instalado para abrir arquivos .xlsx.
+
+---
+
+# Atualizações
+
+Novas versões poderão incluir:
+
+* novos modelos de estrutura;
+* melhorias de desempenho;
+* novos recursos;
+* correções de erros.
+
+---
+
+# Suporte
+
+Para dúvidas, sugestões ou problemas, utilize os canais oficiais disponibilizados pelo desenvolvedor.
+
+Obrigado por utilizar o FolderFlow.

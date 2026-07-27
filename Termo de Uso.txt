@@ -1,0 +1,52 @@
+# TERMO DE USO – FOLDERFLOW
+
+Última atualização: Julho de 2026
+
+Bem-vindo ao FolderFlow.
+
+Este documento estabelece as regras para utilização do software.
+
+## Uso Permitido
+
+O usuário poderá utilizar o programa para automatizar:
+
+* criação de pastas;
+* criação de subpastas;
+* geração de planilhas Excel;
+* organização de projetos.
+
+## Responsabilidade do Usuário
+
+O usuário é responsável por:
+
+* conferir os caminhos selecionados antes da execução;
+* realizar backup de arquivos importantes;
+* utilizar o software de forma ética e legal.
+
+## Atualizações
+
+Novas versões poderão incluir melhorias, correções e novas funcionalidades.
+
+## Suporte
+
+O suporte será prestado conforme os canais oficiais informados pelo desenvolvedor.
+
+## Propriedade Intelectual
+
+Todo o conteúdo do FolderFlow é protegido pelas leis de direitos autorais.
+
+## Privacidade
+
+O FolderFlow não coleta dados pessoais automaticamente.
+
+Os arquivos criados permanecem exclusivamente no computador do usuário.
+
+## Cancelamento da Licença
+
+O descumprimento deste termo poderá resultar na revogação da licença de uso.
+
+## Alterações
+
+Este termo poderá ser atualizado sem aviso prévio.
+
+A versão mais recente acompanhará o software.
