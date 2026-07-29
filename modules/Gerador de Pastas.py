@@ -41,24 +41,25 @@ root.configure(bg=BG)
 root.option_add("*Font", default_font)
 
 # =========================
-# LOGO + ÍCONE (100% FUNCIONAL)
+# LOGO + ÍCONE (ASSETS)
 # =========================
 try:
-    pasta_base = os.path.dirname(os.path.abspath(__file__))
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
-    ico_path = os.path.join(pasta_base, "logo.ico")
-    png_path = os.path.join(pasta_base, "logo.png")
+logo_png = os.path.join(ASSETS_DIR, "logo.png")
+logo_ico = os.path.join(ASSETS_DIR, "logo.ico")
 
     if os.path.exists(ico_path):
         root.iconbitmap(ico_path)
 
-    elif os.path.exists(png_path):
+    if os.path.exists(png_path):
         imagem_logo = Image.open(png_path).resize((64, 64))
         logo_tk = ImageTk.PhotoImage(imagem_logo)
         root.iconphoto(True, logo_tk)
 
 except Exception as e:
-    print("Erro ao carregar ícone:", e)
+    print("Erro ao carregar logo:", e)
 
 # Centraliza janela
 w, h = 1000, 700

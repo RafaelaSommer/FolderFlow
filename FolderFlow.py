@@ -12,9 +12,11 @@ from PIL import Image, ImageTk
 APP_NAME = "FolderFlow Pro"
 VERSION = "1.0"
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODULES_DIR = os.path.join(BASE_DIR, "modules")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(BASE_DIR, "assets")
+
+logo_png = os.path.join(ASSETS_DIR, "logo.png")
+logo_ico = os.path.join(ASSETS_DIR, "logo.ico")
 
 BG = "#141414"
 CARD = "#1E1E1E"
@@ -77,13 +79,20 @@ root.resizable(False, False)
 # ÍCONE
 # ============================
 
-ico = os.path.join(ASSETS_DIR, "logo.ico")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
-if os.path.exists(ico):
+# ============================
+# ÍCONE
+# ============================
+
+icone = os.path.join(ASSETS_DIR, "logo.ico")
+
+if os.path.exists(icone):
     try:
-        root.iconbitmap(ico)
-    except:
-        pass
+        root.iconbitmap(icone)
+    except Exception as e:
+        print(e)
 
 
 # ============================
@@ -116,22 +125,23 @@ card.place(relx=0.5, rely=0.5, anchor="center", width=520, height=450)
 # LOGO
 # ============================
 
-png = os.path.join(ASSETS_DIR, "logo.ico")
+logo_png = os.path.join(ASSETS_DIR, "logo.png")
 
-if os.path.exists(ico):
+if os.path.exists(logo_png):
 
-    try:
+    imagem = Image.open(logo_png)
+    imagem = imagem.resize((120,120))
 
-        img = Image.open(ico)
-        img = img.resize((120,120))
+    logo = ImageTk.PhotoImage(imagem)
 
-        logo = ImageTk.PhotoImage(img)
+    lbl_logo = tk.Label(
+        card,
+        image=logo,
+        bg=CARD
+    )
 
-        lbl = tk.Label(card, image=logo, bg=CARD)
-        lbl.pack(pady=15)
-
-    except:
-        pass
+    lbl_logo.image = logo
+    lbl_logo.pack(pady=20)
 
 
 # ============================

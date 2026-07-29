@@ -156,16 +156,39 @@ root.configure(bg=BG)
 centralizar_janela(root, 520, 360)
 root.resizable(True, True)
 
-# Logo opcional (mantido como estava)
+# ============================
+# LOGO + ÍCONE (PASTA ASSETS)
+# ============================
+
 try:
-    caminho_logo = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.png")
-    if os.path.exists(caminho_logo):
-        img = Image.open(caminho_logo).resize((72, 72))
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ASSETS_DIR = os.path.join(BASE_DIR, "assets")
+
+logo_png = os.path.join(ASSETS_DIR, "logo.png")
+logo_ico = os.path.join(ASSETS_DIR, "logo.ico")
+
+    # Ícone da janela
+    if os.path.exists(logo_ico):
+        root.iconbitmap(logo_ico)
+
+    # Logo da aplicação
+    if os.path.exists(logo_png):
+        img = Image.open(logo_png)
+        img = img.resize((72, 72))
+
         logo_tk = ImageTk.PhotoImage(img)
-        tk.Label(root, image=logo_tk, bg=BG).pack(pady=8)
-        root.iconphoto(True, logo_tk)
-except:
-    pass
+
+        lbl_logo = tk.Label(
+            root,
+            image=logo_tk,
+            bg=BG
+        )
+
+        lbl_logo.image = logo_tk
+        lbl_logo.pack(pady=8)
+
+except Exception as e:
+    print("Erro ao carregar logo:", e)
 
 frame_config = tk.Frame(root, bg=CARD, highlightbackground="#3a3a3a", highlightthickness=1)
 frame_config.pack(padx=20, pady=8, fill="x")
