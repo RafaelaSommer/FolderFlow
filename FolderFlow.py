@@ -12,6 +12,17 @@ from PIL import Image, ImageTk
 APP_NAME = "FolderFlow Pro"
 VERSION = "1.0"
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+LOGO_PATH = os.path.join(
+    BASE_DIR,
+    "assets",
+    "logo.png"
+)
+
+# Pasta onde ficam os módulos
+MODULES_DIR = os.path.join(BASE_DIR, "modules")
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 

@@ -49,20 +49,19 @@ try:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
+    ico_path = os.path.join(ASSETS_DIR, "logo.ico")
     png_path = os.path.join(ASSETS_DIR, "logo.png")
 
+    # Ícone da janela
+    if os.path.exists(ico_path):
+        root.iconbitmap(ico_path)
+
+    # Logo da janela (fallback e exibição)
     if os.path.exists(png_path):
         imagem_logo = Image.open(png_path).resize((64, 64))
-        self.logo_tk = ImageTk.PhotoImage(imagem_logo)
+        logo_tk = ImageTk.PhotoImage(imagem_logo)
+        root.iconphoto(True, logo_tk)
 
-        ttk.Label(
-            top,
-            image=self.logo_tk,
-            style="Card.TLabel"
-        ).pack(side="left", padx=(0, 10))
-
-except Exception as e:
-    print(e)
 except Exception as e:
     print(f"Erro ao carregar logo: {e}")
 
