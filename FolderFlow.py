@@ -1,0 +1,204 @@
+import os
+import sys
+import subprocess
+import tkinter as tk
+from tkinter import messagebox
+from PIL import Image, ImageTk
+
+# ============================
+# CONFIGURAÇÕES
+# ============================
+
+APP_NAME = "FolderFlow Pro"
+VERSION = "1.0"
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODULES_DIR = os.path.join(BASE_DIR, "modules")
+ASSETS_DIR = os.path.join(BASE_DIR, "assets")
+
+BG = "#141414"
+CARD = "#1E1E1E"
+ACCENT = "#00C853"
+TEXT = "#FFFFFF"
+
+
+# ============================
+# EXECUTAR MÓDULOS
+# ============================
+
+def executar(nome):
+
+    arquivo = os.path.join(MODULES_DIR, nome)
+
+    if not os.path.exists(arquivo):
+        messagebox.showerror(
+            "Erro",
+            f"Arquivo não encontrado:\n\n{arquivo}"
+        )
+        return
+
+    subprocess.Popen([sys.executable, arquivo])
+
+
+# ============================
+# BOTÃO
+# ============================
+
+def criar_botao(parent, texto, comando):
+
+    return tk.Button(
+        parent,
+        text=texto,
+        command=comando,
+        bg=ACCENT,
+        fg="white",
+        activebackground="#18D860",
+        activeforeground="white",
+        bd=0,
+        relief="flat",
+        cursor="hand2",
+        font=("Segoe UI", 11, "bold"),
+        height=2
+    )
+
+
+# ============================
+# JANELA
+# ============================
+
+root = tk.Tk()
+root.title(APP_NAME)
+root.configure(bg=BG)
+root.geometry("600x520")
+root.resizable(False, False)
+
+
+# ============================
+# ÍCONE
+# ============================
+
+ico = os.path.join(ASSETS_DIR, "logo.ico")
+
+if os.path.exists(ico):
+    try:
+        root.iconbitmap(ico)
+    except:
+        pass
+
+
+# ============================
+# CENTRALIZAR
+# ============================
+
+root.update_idletasks()
+
+w = 600
+h = 520
+
+ws = root.winfo_screenwidth()
+hs = root.winfo_screenheight()
+
+x = (ws - w) // 2
+y = (hs - h) // 2
+
+root.geometry(f"{w}x{h}+{x}+{y}")
+
+
+# ============================
+# CARD
+# ============================
+
+card = tk.Frame(root, bg=CARD)
+card.place(relx=0.5, rely=0.5, anchor="center", width=520, height=450)
+
+
+# ============================
+# LOGO
+# ============================
+
+png = os.path.join(ASSETS_DIR, "logo.ico")
+
+if os.path.exists(ico):
+
+    try:
+
+        img = Image.open(ico)
+        img = img.resize((120,120))
+
+        logo = ImageTk.PhotoImage(img)
+
+        lbl = tk.Label(card, image=logo, bg=CARD)
+        lbl.pack(pady=15)
+
+    except:
+        pass
+
+
+# ============================
+# TÍTULO
+# ============================
+
+tk.Label(
+    card,
+    text="FolderFlow Pro",
+    bg=CARD,
+    fg="white",
+    font=("Segoe UI",20,"bold")
+).pack()
+
+
+tk.Label(
+    card,
+    text="Gerador de Pastas e Excel",
+    bg=CARD,
+    fg="#AAAAAA",
+    font=("Segoe UI",10)
+).pack(pady=(0,20))
+
+
+# ============================
+# BOTÕES
+# ============================
+
+criar_botao(
+    card,
+    "📁 Gerador de Pastas",
+    lambda: executar("Gerador de Pastas.py")
+).pack(fill="x", padx=40, pady=8)
+
+
+criar_botao(
+    card,
+    "📊 Gerador Excel",
+    lambda: executar("Gerador Excel.py")
+).pack(fill="x", padx=40, pady=8)
+
+
+criar_botao(
+    card,
+    "🖼 Conversor PNG → ICO",
+    lambda: executar("conversor_ico.py")
+).pack(fill="x", padx=40, pady=8)
+
+
+criar_botao(
+    card,
+    "❌ Sair",
+    root.destroy
+).pack(fill="x", padx=40, pady=25)
+
+
+# ============================
+# RODAPÉ
+# ============================
+
+tk.Label(
+    root,
+    text=f"{APP_NAME}  •  Versão {VERSION}",
+    bg=BG,
+    fg="#888888",
+    font=("Segoe UI",9)
+).pack(side="bottom", pady=10)
+
+
+root.mainloop()
