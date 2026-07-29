@@ -43,23 +43,28 @@ root.option_add("*Font", default_font)
 # =========================
 # LOGO + ÍCONE (ASSETS)
 # =========================
+
 try:
+    # Se o arquivo estiver dentro da pasta modules
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSETS_DIR = os.path.join(BASE_DIR, "assets")
+    ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
-logo_png = os.path.join(ASSETS_DIR, "logo.png")
-logo_ico = os.path.join(ASSETS_DIR, "logo.ico")
-
-    if os.path.exists(ico_path):
-        root.iconbitmap(ico_path)
+    png_path = os.path.join(ASSETS_DIR, "logo.png")
 
     if os.path.exists(png_path):
         imagem_logo = Image.open(png_path).resize((64, 64))
-        logo_tk = ImageTk.PhotoImage(imagem_logo)
-        root.iconphoto(True, logo_tk)
+        self.logo_tk = ImageTk.PhotoImage(imagem_logo)
+
+        ttk.Label(
+            top,
+            image=self.logo_tk,
+            style="Card.TLabel"
+        ).pack(side="left", padx=(0, 10))
 
 except Exception as e:
-    print("Erro ao carregar logo:", e)
+    print(e)
+except Exception as e:
+    print(f"Erro ao carregar logo: {e}")
 
 # Centraliza janela
 w, h = 1000, 700

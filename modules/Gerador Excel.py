@@ -162,10 +162,10 @@ root.resizable(True, True)
 
 try:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSETS_DIR = os.path.join(BASE_DIR, "assets")
+    ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
-logo_png = os.path.join(ASSETS_DIR, "logo.png")
-logo_ico = os.path.join(ASSETS_DIR, "logo.ico")
+    logo_png = os.path.join(ASSETS_DIR, "logo.png")
+    logo_ico = os.path.join(ASSETS_DIR, "logo.ico")
 
     # Ícone da janela
     if os.path.exists(logo_ico):
