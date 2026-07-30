@@ -139,26 +139,47 @@ class GeradorPastas:
         self._build_ui()
 
     def _build_ui(self):
-        fonte_texto = font.Font(family="Helvetica", size=10)
+    fonte_texto = font.Font(family="Helvetica", size=10)
 
-        top = ttk.Frame(self.frame, style="Card.TFrame")
-        top.pack(fill="x", pady=(0, 8))
+    top = ttk.Frame(self.frame, style="Card.TFrame")
+    top.pack(fill="x", pady=(0, 15))
 
-        try:
-            png_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.png")
-            if os.path.exists(png_path):
-                imagem_logo = Image.open(png_path).resize((64, 64))
-                self.logo_tk = ImageTk.PhotoImage(imagem_logo)
-                ttk.Label(top, image=self.logo_tk, style="Card.TLabel").pack(side="left", padx=(0, 10))
-        except:
-            pass
+    # =========================
+    # LOGO
+    # =========================
+    try:
+        logo_path = os.path.join(ASSETS_DIR, "logo.png")
 
-        ttk.Label(top, text="Gerador de Pastas", style="Card.TLabel",
-                  font=(default_font[0], 12, "bold")).pack(side="left")
+        if os.path.exists(logo_path):
+            imagem = Image.open(logo_path)
+            imagem = imagem.resize((40, 40), Image.LANCZOS)
 
-        ttk.Label(self.frame, text="Pasta base (opcional):", style="Card.TLabel").pack(anchor="w", pady=(6, 2))
-        frame_base = ttk.Frame(self.frame, style="Card.TFrame")
-        frame_base.pack(fill="x", pady=2)
+            self.logo_tk = ImageTk.PhotoImage(imagem)
+
+            ttk.Label(
+                top,
+                image=self.logo_tk,
+                style="Card.TLabel"
+            ).pack(side="left", padx=(0, 12))
+
+    except Exception as e:
+        print("Erro ao carregar logo:", e)
+
+    # =========================
+    # TÍTULO
+    # =========================
+    ttk.Label(
+        top,
+        text="Gerador de Pastas",
+        style="Card.TLabel",
+        font=("Segoe UI", 18, "bold")
+    ).pack(side="left")
+
+    ttk.Label(
+        self.frame,
+        text="Pasta base (opcional):",
+        style="Card.TLabel"
+    ).pack(anchor="w", pady=(6, 2))
 
         self.entry_base = tk.Entry(frame_base, bg=INPUT_BG, fg=TEXT,
                                    insertbackground=TEXT, font=fonte_texto, relief="flat")
