@@ -1,38 +1,157 @@
-# 🚀 Suite de Automação em Python
+# 📦 FolderFlow Pro
 
-### 📁 Pastas • 📊 Excel • 🖼️ Ícones — tudo em poucos cliques
+<p align="center">
 
-Transforme tarefas repetitivas em segundos com esta coleção de **3 ferramentas com interface gráfica (Tkinter)**, criadas para produtividade real no dia a dia.
+<img src="assets/logo.png" width="180">
 
-> 💡 Simples, rápidas, leves e **100% offline**  
-> 💻 Ideal para quem quer automatizar sem complicação
+# Automatize tarefas em poucos cliques
 
----
+**Gerador de Pastas • Gerador de Excel • Conversor PNG para ICO**
 
-## ✨ O que você encontra aqui?
-
-Um pacote completo com aplicações prontas para uso:
-
-| 🧩 Aplicação | 💡 O que faz |
-|---|---|
-| 📁 **Gerador de Pastas** | Cria estruturas completas de diretórios automaticamente |
-| 📊 **Gerador de Excel** | Gera planilhas `.xlsx` com dados personalizados |
-| 🖼️ **Conversor de Ícone** | Converte imagens em ícones `.ico` rapidamente |
+</p>
 
 ---
 
-## ⚡ Por que usar este projeto?
+## 📖 Sobre
 
-✔ Interface gráfica intuitiva com Tkinter  
-✔ Não precisa de conhecimento técnico  
-✔ Funciona totalmente offline  
-✔ Ideal para produtividade pessoal ou profissional  
-✔ Código organizado e fácil de expandir  
-✔ Aplicações leves e rápidas  
+O **FolderFlow Pro** é uma suíte de automação desenvolvida em Python para eliminar tarefas repetitivas do dia a dia.
+
+Com uma interface moderna e intuitiva, o sistema permite criar estruturas completas de pastas, gerar planilhas Excel personalizadas e converter imagens em ícones profissionais, tudo em uma única aplicação.
+
+Ideal para empresas, escritórios, departamentos administrativos, estudantes e desenvolvedores.
 
 ---
 
-## 🛠️ Instalação Rápida
+# ✨ Recursos
+
+## 📁 Gerador de Pastas
+
+Crie centenas de pastas automaticamente.
+
+### Recursos
+
+- Criar pastas ilimitadas
+- Criar subpastas automaticamente
+- Pasta principal personalizada
+- Estrutura hierárquica
+- Interface Dark Mode
+- Seleção da pasta de destino
+
+---
+
+## 📊 Gerador de Excel
+
+Crie planilhas profissionais sem abrir o Microsoft Excel.
+
+### Recursos
+
+- Quantidade personalizada de linhas
+- Quantidade personalizada de colunas
+- Ajuste automático das colunas
+- Bordas automáticas
+- Cabeçalhos personalizados
+- Exportação em XLSX
+
+---
+
+## 🖼 Conversor PNG para ICO
+
+Converta imagens em ícones para programas.
+
+### Recursos
+
+- PNG
+- JPG
+- JPEG
+
+Exportação rápida para:
+
+- ICO 16x16
+- ICO 32x32
+- ICO 48x48
+- ICO 64x64
+- ICO 128x128
+- ICO 256x256
+
+---
+
+# 🖥 Interface
+
+O sistema possui uma interface gráfica moderna desenvolvida em Tkinter.
+
+✔ Tema escuro
+
+✔ Botões personalizados
+
+✔ Logo personalizada
+
+✔ Ícone do programa
+
+✔ Janelas centralizadas
+
+✔ Fácil utilização
+
+---
+
+# 📂 Estrutura
+
+```
+FolderFlow-Pro/
+
+│
+
+├── FolderFlow.py
+
+│
+
+├── assets/
+
+│   ├── logo.ico
+
+│   ├── logo.png
+
+│   └── banner.png
+
+│
+
+├── modules/
+
+│   ├── gerador_pastas.py
+
+│   ├── gerador_excel.py
+
+│   └── conversor_ico.py
+
+│ Manual.pdf
+
+│  Licenca.txt
+
+│ Termo_de_Uso.txt
+
+│
+
+├── requirements.txt
+
+└── README.md
+```
+
+---
+
+# 🚀 Instalação
+
+Clone o projeto
+
+```bash
+git clone https://github.com/SEU-USUARIO/FolderFlow-Pro.git
+```
+
+Entre na pasta
+
+```bash
+cd FolderFlow-Pro
+```
+
+Instale as dependências
 
 ```bash
 pip install -r requirements.txt
@@ -40,133 +159,113 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Como Executar
+# ▶ Executando
+
+Abra o menu principal
 
 ```bash
-python "Gerador de Pastas.py"
+python FolderFlow.py
+```
 
-python "Gerador Excel.py"
+Ou execute diretamente os módulos
 
-python "conversor_ico.py"
+```bash
+python modules/gerador_pastas.py
+```
+
+```bash
+python modules/gerador_excel.py
+```
+
+```bash
+python modules/conversor_ico.py
 ```
 
 ---
 
-## 🖥️ Interfaces Simples e Diretas
+# 📦 Gerar Executável
 
-- 🎨 Design limpo e funcional  
-- 🌙 Dark Mode no Gerador de Pastas  
-- 🚫 Sem necessidade de terminal após abrir  
-- ⚡ Experiência pensada para agilidade  
+Com PyInstaller
 
----
+```bash
+pyinstaller FolderFlow.spec
+```
 
-## 📁 Gerador de Pastas
+Será criado
 
-Crie estruturas completas com apenas alguns cliques.
+```
+dist/
 
-### 🔥 Destaques
-
-- Seleção de pasta base  
-- Criação automática de múltiplas pastas  
-- Subpastas padrão e opcionais  
-- Entrada em lista (um nome por linha)  
-- Validação inteligente  
-
-### 🧠 Exemplo de Estrutura
-
-```text
-Projeto/
-├── Cliente 1/
-│   ├── Docs/
-│   ├── Financeiro/
-│
-├── Cliente 2/
-│   ├── Docs/
-│   ├── Financeiro/
+FolderFlow.exe
 ```
 
 ---
 
-## 📊 Gerador de Excel
+# 🛠 Tecnologias
 
-Monte planilhas sem abrir o Excel.
-
-### 🔥 Destaques
-
-- Definição de linhas e colunas  
-- Preenchimento direto na interface  
-- Cabeçalhos automáticos  
-- Ajuste automático de colunas  
-- Exportação rápida para `.xlsx`  
-
-📌 Arquivo salvo automaticamente na Área de Trabalho
+- Python
+- Tkinter
+- Pillow
+- OpenPyXL
+- PyInstaller
 
 ---
 
-## 🖼️ Conversor de Ícone
+# 💼 Público-Alvo
 
-Transforme qualquer imagem em ícone profissional.
-
-### 🔥 Destaques
-
-- Suporte a `.png`, `.jpg` e `.jpeg`  
-- Conversão instantânea  
-- Vários tamanhos disponíveis  
-- Ideal para apps, atalhos e projetos  
-
----
-
-## ⚠️ Observações
-
-- Logos são opcionais  
-- Compatível com Python 3.10+  
-- Funciona em qualquer sistema com Python instalado  
+- Empresas
+- Escritórios
+- Recursos Humanos
+- Frotas
+- Administração
+- Contabilidade
+- Engenharia
+- Desenvolvedores
+- Estudantes
 
 ---
 
-## 🧪 Tecnologias Utilizadas
+# ⭐ Diferenciais
 
-- Python 3.x  
-- Tkinter  
-- Pillow  
-- openpyxl  
-- os / shutil  
-
----
-
-## 💎 Possíveis Evoluções
-
-Quer levar esse projeto para outro nível?
-
-✔ Versão `.exe` para Windows  
-✔ Interface moderna com `ttkbootstrap`  
-✔ Tema claro/escuro  
-✔ Banco de dados + histórico  
-✔ Configurações persistentes  
-✔ Versão multilíngue  
-✔ Instalador completo  
+- Interface profissional
+- Código organizado
+- Fácil manutenção
+- Totalmente offline
+- Sem necessidade de internet
+- Alto desempenho
+- Baixo consumo de memória
+- Fácil distribuição
 
 ---
 
-## 🤝 Contribuição & Customização
+# 🔒 Licença
 
-Se quiser melhorar, adaptar ou evoluir esse projeto, contribuições são sempre bem-vindas 🚀
+Este projeto possui licença de uso.
 
-Sinta-se à vontade para abrir issues, sugerir melhorias ou personalizar conforme sua necessidade.
+Consulte:
+
+- Licença
+- Manual
+- Termo de Uso
+
+localizados na pasta **docs**.
 
 ---
 
-## ⭐ Curtiu o projeto?
+# 👩‍💻 Desenvolvido por
 
-Deixe uma ⭐ no repositório e ajude mais pessoas a descobrirem o projeto!
+**Rafaela Sommer Gonçalves**
+
+Engenharia da Computação
+
+Python • Automação • Excel • Interfaces Gráficas
 
 ---
 
-<div align="center">
+<p align="center">
 
-## 💻 Feito para produtividade real
+### ⭐ Se este projeto foi útil para você, deixe uma estrela no repositório.
 
-### 🚀 Automatize • Simplifique • Evolua
+### 🚀 FolderFlow Pro — Automatizando tarefas, aumentando a produtividade.
 
-</div>
+</p>
