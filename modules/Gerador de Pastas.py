@@ -1,4 +1,5 @@
 import os
+import sys
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog, filedialog, font
 from openpyxl import Workbook, load_workbook
@@ -41,29 +42,34 @@ root.configure(bg=BG)
 root.option_add("*Font", default_font)
 
 # =========================
-# LOGO + ÍCONE (ASSETS)
+# Função para encontrar arquivos (Assets)
 # =========================
+def obter_caminho_asset(nome_arquivo):
+    """Procura o arquivo em múltiplos caminhos possíveis."""
+    try:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+    except NameError:
+        base_dir = os.getcwd()
 
-try:
-    # Se o arquivo estiver dentro da pasta modules
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    ASSETS_DIR = os.path.join(BASE_DIR, "assets")
+    caminhos_tentativa = [
+        os.path.join(base_dir, "assets", nome_arquivo),
+        os.path.join(base_dir, nome_arquivo),
+        os.path.join(os.getcwd(), "assets", nome_arquivo),
+        os.path.join(os.getcwd(), nome_arquivo)
+    ]
 
-    ico_path = os.path.join(ASSETS_DIR, "logo.ico")
-    png_path = os.path.join(ASSETS_DIR, "logo.png")
+    for caminho in caminhos_tentativa:
+        if os.path.exists(caminho):
+            return caminho
+    return None
 
-    # Ícone da janela
-    if os.path.exists(ico_path):
+# Carrega ícone da janela se existir
+ico_path = obter_caminho_asset("logo.ico")
+if ico_path:
+    try:
         root.iconbitmap(ico_path)
-
-    # Logo da janela (fallback e exibição)
-    if os.path.exists(png_path):
-        imagem_logo = Image.open(png_path).resize((64, 64))
-        logo_tk = ImageTk.PhotoImage(imagem_logo)
-        root.iconphoto(True, logo_tk)
-
-except Exception as e:
-    print(f"Erro ao carregar logo: {e}")
+    except Exception:
+        pass
 
 # Centraliza janela
 w, h = 1000, 700
@@ -136,27 +142,55 @@ class GeradorPastas:
     def __init__(self, parent):
         self.frame = ttk.Frame(parent, style="Card.TFrame", padding=(12, 12))
         self.frame.pack(fill="both", expand=True, padx=12, pady=12)
+        self.logo_tk = None  # Mantém a referência na memória
         self._build_ui()
 
     def _build_ui(self):
         fonte_texto = font.Font(family="Helvetica", size=10)
 
+        # Container do Cabeçalho
         top = ttk.Frame(self.frame, style="Card.TFrame")
-        top.pack(fill="x", pady=(0, 8))
+        top.pack(fill="x", pady=(0, 15))
 
-        try:
-            png_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.png")
-            if os.path.exists(png_path):
-                imagem_logo = Image.open(png_path).resize((64, 64))
-                self.logo_tk = ImageTk.PhotoImage(imagem_logo)
-                ttk.Label(top, image=self.logo_tk, style="Card.TLabel").pack(side="left", padx=(0, 10))
-        except:
-            pass
+        # =========================
+        # CARREGAMENTO DA LOGO
+        # =========================
+        png_path = obter_caminho_asset("logo.png")
+        
+        if png_path:
+            try:
+                imagem = Image.open(png_path)
+                imagem = imagem.resize((48, 48), Image.LANCZOS)
+                self.logo_tk = ImageTk.PhotoImage(imagem)
+            except Exception as e:
+                print(f"Erro ao processar imagem logo.png: {e}")
 
-        ttk.Label(top, text="Gerador de Pastas", style="Card.TLabel",
-                  font=(default_font[0], 12, "bold")).pack(side="left")
+        # TÍTULO COM LOGO INTEGRADA (COMPOUND LEFT)
+        if self.logo_tk:
+            lbl_titulo = ttk.Label(
+                top,
+                text=" Gerador de Pastas",
+                image=self.logo_tk,
+                compound="left",
+                style="Card.TLabel",
+                font=("Segoe UI", 18, "bold")
+            )
+        else:
+            lbl_titulo = ttk.Label(
+                top,
+                text="Gerador de Pastas",
+                style="Card.TLabel",
+                font=("Segoe UI", 18, "bold")
+            )
+        lbl_titulo.pack(side="left")
 
-        ttk.Label(self.frame, text="Pasta base (opcional):", style="Card.TLabel").pack(anchor="w", pady=(6, 2))
+        # CAMPO 1: Pasta base
+        ttk.Label(
+            self.frame,
+            text="Pasta base (opcional):",
+            style="Card.TLabel"
+        ).pack(anchor="w", pady=(6, 2))
+
         frame_base = ttk.Frame(self.frame, style="Card.TFrame")
         frame_base.pack(fill="x", pady=2)
 
@@ -166,29 +200,34 @@ class GeradorPastas:
 
         styled_button(frame_base, text="Procurar", command=self.escolher_pasta).pack(side="left", padx=6)
 
+        # CAMPO 2: Nome da pasta principal
         ttk.Label(self.frame, text="Nome da pasta principal (opcional):",
                   style="Card.TLabel").pack(anchor="w", pady=(8, 2))
         self.entry_pasta_principal = tk.Entry(self.frame, bg=INPUT_BG, fg=TEXT,
                                               insertbackground=TEXT, font=fonte_texto, relief="flat")
         self.entry_pasta_principal.pack(fill="x", pady=2, ipady=6)
 
+        # CAMPO 3: Nomes das pastas
         ttk.Label(self.frame, text="Nomes (um por linha):", style="Card.TLabel").pack(anchor="w", pady=(8, 2))
         self.text_nomes = tk.Text(self.frame, height=4, bg=INPUT_BG, fg=TEXT,
                                   insertbackground=TEXT, bd=0)
         self.text_nomes.pack(fill="x", pady=2)
 
+        # CAMPO 4: Subpastas gerais
         ttk.Label(self.frame, text="Subpastas gerais (um por linha):",
                   style="Card.TLabel").pack(anchor="w", pady=(8, 2))
         self.text_subpastas_geral = tk.Text(self.frame, height=3, bg=INPUT_BG, fg=TEXT,
                                             insertbackground=TEXT, bd=0)
         self.text_subpastas_geral.pack(fill="x", pady=2)
 
+        # CAMPO 5: Subpastas secundárias
         ttk.Label(self.frame, text="Subpastas secundárias (um por linha):",
                   style="Card.TLabel").pack(anchor="w", pady=(8, 2))
         self.text_subpastas_secundarias = tk.Text(self.frame, height=3, bg=INPUT_BG, fg=TEXT,
                                                   insertbackground=TEXT, bd=0)
         self.text_subpastas_secundarias.pack(fill="x", pady=2)
 
+        # BOTÃO CRIAR PASTAS
         styled_button(self.frame, text="CRIAR PASTAS", command=self.criar_pastas).pack(
             pady=12, ipadx=6, ipady=6
         )
