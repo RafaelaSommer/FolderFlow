@@ -6,7 +6,6 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 
 def resource_path(relative_path):
-    """Retorna o caminho absoluto do recurso, funcionando no PyInstaller e no modo normal."""
     try:
         base_path = sys._MEIPASS
     except Exception:
@@ -21,14 +20,8 @@ def resource_path(relative_path):
 APP_NAME = "FolderFlow Pro"
 VERSION = "1.0"
 
-BASE_DIR = os.path.dirname(os.path.abspath(sys.executable if getattr(sys, "frozen", False) else __file__))
-MODULES_DIR = os.path.join(BASE_DIR, "modules")
-
-print(MODULES_DIR)
-
-LOGO_PATH = resource_path("assets/logo.png")
-ICON_PATH = resource_path("assets/logo.ico")
-
+logo_png = resource_path("assets/logo.png")
+logo_ico = resource_path("assets/logo.ico")
 BG = "#141414"
 CARD = "#1E1E1E"
 ACCENT = "#00C853"
