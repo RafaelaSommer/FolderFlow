@@ -5,6 +5,15 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 
+def resource_path(relative_path):
+    """Retorna o caminho absoluto do recurso, funcionando no PyInstaller e no modo normal."""
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 # ============================
 # CONFIGURAÇÕES
 # ============================
@@ -12,25 +21,12 @@ from PIL import Image, ImageTk
 APP_NAME = "FolderFlow Pro"
 VERSION = "1.0"
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(sys.executable if getattr(sys, "frozen", False) else __file__))
 
-LOGO_PATH = os.path.join(
-    BASE_DIR,
-    "assets",
-    "logo.png"
-)
-
-print("Caminho da logo:", LOGO_PATH)
-print("Existe?", os.path.exists(LOGO_PATH))
-
-# Pasta onde ficam os módulos
 MODULES_DIR = os.path.join(BASE_DIR, "modules")
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSETS_DIR = os.path.join(BASE_DIR, "assets")
-
-logo_png = os.path.join(ASSETS_DIR, "logo.png")
-logo_ico = os.path.join(ASSETS_DIR, "logo.ico")
+LOGO_PATH = resource_path("assets/logo.png")
+ICON_PATH = resource_path("assets/logo.ico")
 
 BG = "#141414"
 CARD = "#1E1E1E"
@@ -88,7 +84,10 @@ root.configure(bg=BG)
 root.geometry("600x520")
 root.resizable(False, False)
 
-logo = Image.open(LOGO_PATH)
+if os.path.exists(LOGO_PATH):
+    logo = Image.open(LOGO_PATH)
+    logo = logo.resize((35,35))
+    logo_img = ImageTk.PhotoImage(logo)
 
 logo = logo.resize((35,35))
 
@@ -102,7 +101,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
 
-icone = os.path.join(ASSETS_DIR, "logo.ico")
+icone = ICON_PATH
 
 if os.path.exists(icone):
     try:
@@ -141,7 +140,7 @@ card.place(relx=0.5, rely=0.5, anchor="center", width=520, height=450)
 # LOGO
 # ============================
 
-logo_png = os.path.join(ASSETS_DIR, "logo.png")
+logo_png = LOGO_PATH
 
 if os.path.exists(logo_png):
 
