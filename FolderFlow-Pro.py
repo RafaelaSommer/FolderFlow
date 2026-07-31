@@ -22,8 +22,9 @@ APP_NAME = "FolderFlow Pro"
 VERSION = "1.0"
 
 BASE_DIR = os.path.dirname(os.path.abspath(sys.executable if getattr(sys, "frozen", False) else __file__))
-
 MODULES_DIR = os.path.join(BASE_DIR, "modules")
+
+print(MODULES_DIR)
 
 LOGO_PATH = resource_path("assets/logo.png")
 ICON_PATH = resource_path("assets/logo.ico")
